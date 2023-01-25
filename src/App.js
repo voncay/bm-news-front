@@ -16,7 +16,7 @@ function App() {
     await axios.get('http://localhost:8000/api/articles')
     .then(res => {
         setNewsData(res.data)
-        console.log(res.data, "newsData from App")
+        // console.log(res.data, "newsData from fetch in App")
     })
     .catch(err => console.log(err))
   }

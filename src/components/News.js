@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const News = ({ newsData}) =>{
 
-  console.log(newsData, "newsData from News")
+  // console.log(newsData, "newsData from News")
 
   const hideNews = (string) => {
     const element = document.getElementById(string);
@@ -17,8 +17,9 @@ const News = ({ newsData}) =>{
         { newsData.map((e, index) => {
             return (
               <li key={e._id}>
-                <h4>{e.author_name}</h4>
+                <h3>{e.title}</h3>
                 <p>{e.text}</p>
+                <p><em>{e.author_name}</em></p>
               </li>
             )
         })}

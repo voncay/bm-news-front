@@ -1,20 +1,41 @@
 import './App.css';
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+
+import NotFound from './components/NotFound';
+import Navbar from './components/Navbar';
+import News from './components/News';
+import Footer from './components/Footer';
 
 function App() {
 
-  useEffect( () => {
-    axios.get('http://localhost:8000/api/articles')
+  const [newsData, setNewsData] = useState([]);
+
+  const fetchNewsData = async () => {
+    await axios.get('http://localhost:8000/api/articles')
     .then(res => {
-        console.log(res, "response from App")
+        setNewsData(res.data)
+        console.log(res.data, "newsData from App")
     })
     .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    fetchNewsData();
   }, [])
+
 
   return (
     <div className="App">
-      <h1>BM NEWS</h1>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<News newsData={newsData}/>} />
+        {/* <Route path="/article/:articleID" element={<Article />} /> */}
+        {/* <Route path="/article/:articleID/comments" element={<Comments />} /> */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

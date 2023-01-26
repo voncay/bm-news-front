@@ -32,13 +32,15 @@ const News = ({ newsData}) =>{
                 <p>{article.text}</p>
                 <div>
                   <h4>Comments</h4>
-                  { commentsData.filter(comment =>  comment.articleId && comment.articleId._id === article._id).map((el, i) => {
-                    return(
-                      <div key={el._id}>
-                        <p><b>{el.author_name}</b></p>
-                        <p><em>{el.text}</em></p>
-                      </div>
-                    )
+                  { commentsData
+                    .filter(comment =>  comment.articleId && comment.articleId._id === article._id)
+                    .map((el, i) => {
+                      return(
+                        <div key={el._id}>
+                          <p><b>{el.author_name}</b></p>
+                          <p><em>{el.text}</em></p>
+                        </div>
+                      )
                   })}
                 < AddComment articleId={article._id}/>
                 </div>

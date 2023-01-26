@@ -16,8 +16,8 @@ const AddComment = ({ articleId }) => {
   // const body = {name, comment, articleId} // author_name, text, articleId
   // const url = `http://localhost:8000/api/articles/${articleId}`
 
-  const postComment = () => {
-    axios.post(`http://localhost:8000/api/comments`, {
+  const postComment = async () => {
+    await axios.post(`http://localhost:8000/api/comments`, {
         author_name : name,
         text: comment,
         articleId: articleId
@@ -28,11 +28,10 @@ const AddComment = ({ articleId }) => {
       console.log(req, "req axios post")
       setCommentId(req.data._id)  // retrieve comment id
       console.log(commentId, `commentId for ${name}`)
-      putArticle()
+      // putArticle()
     })
     // .then(() => {
-    //   setComment('')
-    //   setName('')
+    //   putArticle()
     // })
     .catch(err => console.log(err), "error axios post")
   }
@@ -54,8 +53,13 @@ const AddComment = ({ articleId }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     postComment()
+    // retrieveComment()
     // putArticle()
   }
+
+  // useEffect( () => {
+  //   retrieveComment()
+  // }, [commentId])
 
   return(
     <form onSubmit={ (event) => handleSubmit(event)} className="form">

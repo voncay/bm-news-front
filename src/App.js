@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import NotFound from './components/NotFound';
 import Navbar from './components/Navbar';
 import News from './components/News';
+// import Comments from './components/Comments';
 import Footer from './components/Footer';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     await axios.get('http://localhost:8000/api/articles')
     .then(res => {
         setNewsData(res.data)
-        // console.log(res.data, "newsData from fetch in App")
+        console.log(res.data, "newsData from fetch in App")
     })
     .catch(err => console.log(err))
   }

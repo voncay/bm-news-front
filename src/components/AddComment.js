@@ -36,19 +36,19 @@ const AddComment = ({ articleId }) => {
     .catch(err => console.log(err), "error axios post")
   }
 
-  const putArticle = () => {
-    axios.put(`http://localhost:8000/api/articles/${articleId}`, {
-      comments: commentId
-    })
-    .then( (req, res) => {
-      console.log(res, "res axios put")
-      console.log(req, "req axios put")
-    })
-    .then(() => {
-      setCommentId('')
-    })
-    .catch(err => console.log(err), "error axios put")
-  }
+  // const putArticle = () => {
+  //   axios.put(`http://localhost:8000/api/articles/${articleId}`, {
+  //     comments: commentId
+  //   })
+  //   .then( (req, res) => {
+  //     console.log(res, "res axios put")
+  //     console.log(req, "req axios put")
+  //   })
+  //   .then(() => {
+  //     setCommentId('')
+  //   })
+  //   .catch(err => console.log(err), "error axios put")
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault()
